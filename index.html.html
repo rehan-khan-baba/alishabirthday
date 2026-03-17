@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Alisha ❤️</title>
+
+<style>
+body {
+  margin:0;
+  text-align:center;
+  font-family: Arial;
+  background:black;
+  color:white;
+  overflow:hidden;
+}
+
+#startBtn {
+  margin-top:200px;
+  padding:20px 40px;
+  font-size:20px;
+  background:#ff4da6;
+  border:none;
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
+  box-shadow:0 0 20px pink;
+}
+
+#main {
+  display:none;
+}
+
+h1 {
+  font-size:3em;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {text-shadow:0 0 10px white;}
+  to {text-shadow:0 0 30px pink;}
+}
+
+video {
+  width:70%;
+  border-radius:15px;
+  margin-top:20px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size:20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<button id="startBtn">🎁 Click for Surprise</button>
+
+<div id="main">
+  <h1>🎉 Happy Birthday Alisha 🎉</h1>
+
+  <p id="text"></p>
+
+  <h3>— Rehan ❤️</h3>
+
+  <video autoplay loop muted controls>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4">
+  </video>
+
+  <audio id="music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
+  </audio>
+</div>
+
+<script>
+let btn = document.getElementById("startBtn");
+let main = document.getElementById("main");
+let music = document.getElementById("music");
+
+btn.onclick = () => {
+  btn.style.display = "none";
+  main.style.display = "block";
+  music.play();
+
+  startTyping();
+  startHearts();
+};
+
+// Typing effect
+let message = "Alisha... 💫\n\nTum sirf ek naam nahi ho,\ntum wo feeling ho jo dil ko khush kar deti hai ❤️\n\nTumhari smile kisi ka din bana sakti hai...\naur shayad wo 'kisi' main hoon 😊";
+
+let i = 0;
+function startTyping() {
+  let text = document.getElementById("text");
+  let interval = setInterval(() => {
+    text.innerHTML += message[i] === "\n" ? "<br>" : message[i];
+    i++;
+    if (i >= message.length) clearInterval(interval);
+  }, 50);
+}
+
+// Hearts
+function startHearts() {
+  setInterval(() => {
+    let heart = document.createElement("div");
+    heart.innerHTML = "❤️";
+    heart.className = "heart";
+    heart.style.left = Math.random()*100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove();},6000);
+  },300);
+}
+</script>
+
+</body>
+</html>
